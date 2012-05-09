@@ -8,7 +8,7 @@ If this is your first time using Github, review http://help.github.com to learn 
 To run the application:
 -------------------
 Import the project as a maven project into your IDE of choice. 
-Look for com.spidertracks.demo.rest.api.Start in src/test/java and run it. You should now have the application running at http://localhost:8090/rest/
+Look for the `com.spidertracks.demo.rest.api.Start` class in src/test/java and run it. You should now have the application running at http://localhost:8090/rest/
 
 
 Spring Framework Version: 3.1.0.RELEASE
