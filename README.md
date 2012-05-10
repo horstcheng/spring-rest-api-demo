@@ -1,7 +1,7 @@
 To get the code:
 -------------------
 Clone the repository:
-$ git clone git://github.com/Spidertracks/spring-rest-api-demo.git
+`git clone git://github.com/Spidertracks/spring-rest-api-demo.git`
 
 If this is your first time using Github, review http://help.github.com to learn the basics.
 
