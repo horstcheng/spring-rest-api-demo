@@ -24,24 +24,31 @@ There are three ways of requesting a specific type of response:
 3. Adding the format as the file type of the request. Eg instead of the url http://localhost:8090/object, your would have http://localhost:8090/object.json
 
 URLs the servlet responds to:
-	/hello - responds with the text Hello.
-	/welcome - Either a get or post request will work. If there is a name parameter in the request, the value of the name parameter will be 
+	+ /hello - responds with the text Hello.
+	+ /welcome - Either a get or post request will work. If there is a name parameter in the request, the value of the name parameter will be 
 		included in the welcome response. 
-	/people - This path will only respond to GET requests. The response format can be changed from the default of json to xml by using one of the 
-	three methods listed above. The response is a description of a person object in json or xml. The /people* urls require basic authentication to access them. This is set up in the security context. The user name is `user` and the password is `pass`.
+	+ /people - This path will only respond to GET requests. The response format can be changed from the default of json to xml by using one of the 
+	three methods listed above. The response is a description of a person object in json or xml.  
+	The /people* urls require basic authentication to access them. This is set up in the security context. The user name is `user` and the password is `pass`.
 
-		Example URLs:
-			http://localhost:8090/rest/people/search?name=doe
-			http://localhost:8090/rest/people/search.xml?name=doe
-			http://localhost:8090/rest/people
-			http://localhost:8090/rest/people.xml
-			http://localhost:8090/rest/people/1
-			http://localhost:8090/rest/people/1.xml
-			http://localhost:8090/rest/people - Use POST with a body and appropriate content type to create a new person.
-			http://localhost:8090/rest/people/1 - with PUT request and a updated person object
-			http://localhost:8090/rest/people/1.xml  - with PUT request and a updated person object
-			http://localhost:8090/rest/people/1 - DELETE request
-			http://localhost:8090/rest/people/1.xml - DELETE request
+	Example URLs:
+
+		http://localhost:8090/rest/people/search?name=doe
+		http://localhost:8090/rest/people/search.xml?name=doe
+		http://localhost:8090/rest/people/search.json?name=doe
+		http://localhost:8090/rest/people
+		http://localhost:8090/rest/people.json
+		http://localhost:8090/rest/people.xml
+		http://localhost:8090/rest/people/1
+		http://localhost:8090/rest/people/1.xml
+		http://localhost:8090/rest/people/1.json
+		http://localhost:8090/rest/people - Use POST with a body and appropriate content type to create a new person.
+		http://localhost:8090/rest/people/1 - with PUT request and a updated person object
+		http://localhost:8090/rest/people/1.xml  - with PUT request and a updated person object
+		http://localhost:8090/rest/people/1.json  - with PUT request and a updated person object
+		http://localhost:8090/rest/people/1 - DELETE request
+		http://localhost:8090/rest/people/1.json - DELETE request
+		http://localhost:8090/rest/people/1.xml - DELETE request
 
 
 ### JSR-303 Bean Validation API
@@ -53,7 +60,7 @@ This project uses the hibernate implementation of JSR-303. In the WelcomeControl
 
 HttpMessageConverters is the magic that provides automatic conversion of Java objects to XML and JSON. In the rest-demo-servlet.xml, the 
 section starting with `<mvc:annotation-driven>` automatically creates some standard HttpMessageConverters based on what jars are on the classpath. In particular, if the 
-Jackson library is on the classpath, then a JSON converter will be created. We also add an XML marshaller based on XStream. 
+Jackson library is on the classpath, then a JSON converter will be created. We also add an XML marshaller based on XStream. We do this manually because by default Spring doesn't seem to do it quite right.
 
 
 ### Start.java
@@ -62,8 +69,8 @@ This is the class that runs an embedded Jetty server with the servlet.
 
 ### WelcomeController.java
 
-This is responsible for handling the various requests. Methods are annotated with @RequestMapping which indicates which url paths each method can handle, as well as what http request methods are supported. Each @RequestMapping method has logic to handle a particular operation on the people service. 
-There are also two error handling methods (annotated with @ExceptionHandler) to deal with the situation where the input data is not valid and we need to show the user a description of the error.
+This is responsible for handling the various requests. Methods are annotated with `@RequestMapping` which indicates which url paths each method can handle, as well as what http request methods are supported. Each `@RequestMapping` method has logic to handle a particular operation on the people service. 
+There are also two error handling methods (annotated with `@ExceptionHandler`) to deal with the situation where the input data is not valid and we need to show the user a description of the error.
 
 How to check the Controller method
 ----------------------------------
