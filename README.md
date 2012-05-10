@@ -50,6 +50,16 @@ URLs the servlet responds to:
 		http://localhost:8090/rest/people/1.json - DELETE request
 		http://localhost:8090/rest/people/1.xml - DELETE request
 
+### Features
+
+* Uses embedded Jetty
+* Uses basic auth to secure some url paths
+* A simple RESTful api
+* Uses Spring annotations
+* Uses HttpMessageConverters - allows the serialization of objects to XML and JSON. Also used for converting request bodies into Java objects.
+* Security configuration isolated to a single file.
+* Comments with explanations of why some features were implemented a certain way.
+
 
 ### JSR-303 Bean Validation API
 
