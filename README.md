@@ -20,15 +20,16 @@ Overview
 This is an application to demo the implementation of a REST API that can return responses in both JSON and XML. 
 There are three ways of requesting a specific type of response:
 
-1. Setting the Accept header to application/[json|xml]
-2. Adding a ?format=[json|xml] parameter to the url.
-3. Adding the format as the file type of the request. Eg instead of the url http://localhost:8090/object, your would have http://localhost:8090/object.json
+1. Setting the Accept header to `application/[json|xml]`
+2. Adding a `?format=[json|xml]` parameter to the url.
+3. Adding the format as the file type of the request. Eg instead of the url `http://localhost:8090/object`, your would have `http://localhost:8090/object.json`
 
 URLs the servlet responds to:
-	+ /hello - responds with the text Hello.
-	+ /welcome - Either a get or post request will work. If there is a name parameter in the request, the value of the name parameter will be 
+
++ `/hello` - responds with the text Hello.
++ `/welcome` - Either a get or post request will work. If there is a name parameter in the request, the value of the name parameter will be 
 		included in the welcome response. 
-	+ /people - This path will only respond to GET requests. The response format can be changed from the default of json to xml by using one of the 
++ `/people` - This path will only respond to GET requests. The response format can be changed from the default of json to xml by using one of the 
 	three methods listed above. The response is a description of a person object in json or xml.  
 	The /people* urls require basic authentication to access them. This is set up in the security context. The user name is `user` and the password is `pass`.
 
