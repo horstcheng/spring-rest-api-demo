@@ -19,6 +19,7 @@ Overview
 
 This is an application to demo the implementation of a REST API that can return responses in both JSON and XML. 
 There are three ways of requesting a specific type of response:
+
 1. Setting the Accept header to application/[json|xml]
 2. Adding a ?format=[json|xml] parameter to the url.
 3. Adding the format as the file type of the request. Eg instead of the url http://localhost:8090/object, your would have http://localhost:8090/object.json
